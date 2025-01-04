@@ -33,8 +33,9 @@ ul {
 }
 
 li {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr; /* Adjusted to add space for task name */
+    gap: 0.5rem;
     align-items: center;
     background-color: #2E8BC0;
     color: #FFFFFF;
@@ -96,40 +97,113 @@ button:disabled {
 }
 
 button.delete {
-    background-color: #FF6B6B;
+    background-color: transparent;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+button.delete i {
+    color: #FFFFFF;
+    font-size: 1.2rem;
 }
 
 button.delete:hover {
     background-color: #FF4C4C;
 }
 
-input[type="text"] {
+input[type="text"], input[type="number"], input[type="time"], select {
     padding: 0.5rem;
     margin: 0.5rem;
     border: 1px solid #145DA0;
     border-radius: 5px;
-    width: calc(100% - 1rem);
-    max-width: 600px;
+    background-color: #F0F0F0;
+    color: #0C2D48;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+}
+
+input.task-name {
+    grid-column: 1 / 2;
+    margin-right: 0rem; /* Add gap between task name and duration */
+}
+
+select.timer-type {
+    grid-column: 2 / 3;
+}
+
+input.hours {
+    grid-column: 3 / 4;
+}
+
+input.minutes {
+    grid-column: 4 / 5;
+}
+
+input.seconds {
+    grid-column: 5 / 6;
+}
+
+input.specific-time-input {
+    grid-column: 6 / 7;
 }
 
 button#add-todo {
     background-color: #145DA0;
     color: #FFFFFF;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem;
     margin: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button#add-todo i {
+    font-size: 1.5rem;
+}
+
+button#add-todo:hover {
+    background-color: #0C2D48;
+}
+
+.timer-options {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    flex-wrap: nowrap; /* Changed from wrap to nowrap */
+    gap: 0.5rem; /* Added gap for spacing */
+}
+
+.timer-options select, .timer-options input {
+    flex: 0 1 auto;
+    width: 80px; /* Set a fixed width to make inputs a little longer */
+    padding: 0.5rem; /* Revert padding to original size */
+    font-size: 0.875rem; /* Revert font size to original size */
+}
+
+button.start-timer {
+    background-color: #145DA0;
+    color: #FFFFFF;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
     transition: background-color 0.3s ease;
+    grid-column: 6 / 7;
 }
 
-button#add-todo:hover {
+button.start-timer:hover {
     background-color: #0C2D48;
 }
 
@@ -147,4 +221,78 @@ form input[type="text"] {
 
 form button {
     flex: 0;
+}
+
+.task-actions {
+    margin-left: auto; /* Align Start and Delete buttons to the right */
+    display: flex;
+    gap: 0.5rem; /* Add gap between buttons */
+    /* grid-column: 7 / 7; */
+}
+
+@media (max-width: 600px) {
+    li {
+        grid-template-columns: 1fr;
+    }
+
+    .task-actions {
+        grid-column: 1 / 2;
+    }
+
+    button.start-timer {
+        grid-column: 1 / 2;
+    }
+
+    input.task-name, select.timer-type, input.hours, input.minutes, input.seconds, input.specific-time-input {
+        grid-column: 1 / 2;
+    }
+
+    .timer-options {
+        flex-direction: column;
+    }
+
+    .timer-options select, .timer-options input {
+        width: 100%;
+    }
+}
+
+.dropdown-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.dropdown-container.horizontal {
+    flex-direction: row;
+}
+
+/* Example styles for dropdowns */
+.dropdown {
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 0.5rem;
+    border: 1px solid #CCCCCC;
+    border-radius: 0px;
+}
+
+.dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    padding: 1rem;
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dialog h2 {
+    margin-top: 0;
+}
+
+.dialog button {
+    margin-top: 1rem;
 }

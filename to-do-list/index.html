@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
+    <title>Todulse</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>To-Do List</h1>
+    <h1>Todulse</h1>
     <ul id="todo-list">
         <!-- List items will be dynamically added here -->
     </ul>
-    <input type="text" id="new-todo" placeholder="Add a new task">
-    <button id="add-todo">Add</button>
+    <button id="add-todo" type="button" title="Add To-Do"><i class="fas fa-plus"></i></button>
+    <button id="settings" type="button" title="Settings"><i class="fas fa-cog"></i></button>
+    <audio id="ringtone" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
+
+    <div id="settings-dialog" class="dialog" style="display: none;">
+        <h2>Settings</h2>
+        <label for="ringtone-select">Select Ringtone:</label>
+        <select id="ringtone-select">
+            <option value="https://www.soundjay.com/button/beep-07.wav">Beep</option>
+            <option value="https://www.soundjay.com/misc/sounds/bell-ringing-01c.mp3">Bell Ringing 1</option>
+            <option value="https://www.soundjay.com/misc/sounds/bell-ringing-02.mp3">Bell Ringing 2</option>
+        </select>
+        <button id="save-settings">Save</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
