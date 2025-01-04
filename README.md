@@ -3,6 +3,7 @@ All my HTML projects.
 
 Contains html, css, and js.
 
-A list of all the projects:
+I aim for 50 projects. 
+A list of all the current projects:
 
-1. To Do List
+1. Todulse (to do list)
