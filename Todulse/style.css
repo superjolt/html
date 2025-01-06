@@ -127,7 +127,7 @@ input[type="text"], input[type="number"], input[type="time"], select {
 
 input.task-name {
     grid-column: 1 / 2;
-    margin-right: 0rem; /* Add gap between task name and duration */
+    margin-right: 1rem; /* Add gap between task name and duration */
 }
 
 select.timer-type {
@@ -287,6 +287,8 @@ form button {
     border-radius: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    display: none; /* This is correct for initial state */
+    display: block;
 }
 
 .dialog h2 {
