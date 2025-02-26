@@ -94,7 +94,6 @@ function addTask() {
                 dialog.remove();
             });
 
-            // Text-to-speech
             const utterance = new SpeechSynthesisUtterance(`Reminder: ${taskName}`);
             window.speechSynthesis.speak(utterance);
         };
